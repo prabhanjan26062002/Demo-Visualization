@@ -4,7 +4,7 @@ import folium
 from streamlit_folium import folium_static
 
 def display_map():
-    df = pd.read_csv('processed/processed.csv')
+    df = pd.read_csv('processed.csv')
     amenity_columns = df.columns[17:]
     df["available_amenities"] = df[amenity_columns].apply(
         lambda row: {col: row[col] for col in amenity_columns if pd.notna(row[col]) and str(row[col]).strip().lower() not in ["n", "no", "0", "false", "y", "yes", "1", "true"]},
